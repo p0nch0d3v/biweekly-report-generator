@@ -1,1 +1,4 @@
 biweekly-report-generator
+dist
+/dist
+dist/
