@@ -22,7 +22,7 @@ jobs:
       run: go build src/main.go
 
     - name: Build Dist
-      run: bash build.sh
+      run: bash build.sh biweekly-report-generator
 
     - name: List Dist
       run: ls -la dist/
