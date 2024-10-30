@@ -31,17 +31,21 @@ func main() {
 			if len(line) > 0 {
 				single_tab := strings.Index(line, "\t")
 				double_tab := strings.Index(line, "\t\t")
+				single_tab_space := strings.Index(line, "    ")
+				double_tab_space := strings.Index(line, "        ")
 
-				if single_tab > -1 && double_tab == -1 {
+				if (single_tab == 0 || single_tab_space == 0) && (double_tab == -1 && double_tab_space == -1) {
 					clean_project := strings.ReplaceAll(line, "\t", "")
+					clean_project = strings.ReplaceAll(clean_project, "    ", "")
 					if slices.Index(projects, clean_project) == -1 {
 						projects = append(projects, clean_project)
 					}
 					current_project = clean_project
 				}
 
-				if single_tab > -1 && double_tab > -1 {
+				if (single_tab == 0 || single_tab_space == 0) && (double_tab == 0 || double_tab_space == 0) {
 					clean_task := strings.ReplaceAll(line, "\t\t", "")
+					clean_task = strings.ReplaceAll(clean_task, "        ", "")
 					project_task := fmt.Sprintf("%s %s", current_project, clean_task)
 					if slices.Index(tasks, project_task) == -1 {
 						tasks = append(tasks, project_task)
