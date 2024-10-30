@@ -6,7 +6,7 @@ name: Build and publish
 on:
   push:
     branches: [ "master" ]
-    tags: ['v*'] # Push events to matching v*, i.e. v1.0, v20.15.10
+    tags: ['v*']
 
 jobs:
   build:
@@ -15,15 +15,15 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Go
+    - name: set up go
       uses: actions/setup-go@v4
       with:
         go-version: '1.23.x'
 
-    - name: Build
+    - name: build with go
       run: go build src/main.go
 
-    - name: Build Dist
+    - name: build dist
       run: bash build.sh biweekly-report-generator
 
     - name: version
@@ -42,7 +42,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
-    - name: upload linux artifact
+    - name: upload linux/amd64 artifact
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ github.token }}
@@ -50,4 +50,34 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./dist/biweekly-report-generator-linux-amd64
         asset_name: biweekly-report-generator-linux-amd64
+        asset_content_type: applicationapplication
+
+    - name: upload windows/amd64 artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/biweekly-report-generator-windows-amd64.exe
+        asset_name: biweekly-report-generator-windows-amd64.exe
+        asset_content_type: applicationapplication
+
+    - name: upload darwin/amd64 artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/biweekly-report-generator-darwin-amd64
+        asset_name: biweekly-report-generator-darwin-amd64
+        asset_content_type: applicationapplication
+
+    - name: upload darwin/arm64 artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/biweekly-report-generator-darwin-arm64
+        asset_name: biweekly-report-generator-darwin-arm64
         asset_content_type: applicationapplication
