@@ -27,7 +27,7 @@ jobs:
       run: bash build.sh biweekly-report-generator
 
     - name: version
-      run: "echo $(date '+%Y.%j.%H.%M')"
+      run: echo "::set-output name=version::$(date '+%Y.%j.%H.%M')"
       id: version
 
     - name: release
