@@ -15,15 +15,20 @@ as example:
     - project B
         - task E
 ```
-Where:
-> Project is identified with a single tab
 
-> Task is identified with a double tab
+Where:
+> Project is identified with a single tab (or four spaces)
+
+> Task is identified with a double tab (or eight spaces)
 
  Usage:
  ```bash
 ./biweekly-report-generator-linux-amd64 file.md
  ```
+or
+```powershell
+.\biweekly-report-generator-windows-amd64.exe file.txt
+```
 
 Output:
 ```
