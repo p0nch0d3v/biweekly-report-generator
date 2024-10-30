@@ -12,7 +12,7 @@ import (
 func main() {
 	argsWithoutProg := os.Args[1:]
 
-	if len(argsWithoutProg) == 1 {
+	if len(argsWithoutProg) >= 1 {
 		file_path := argsWithoutProg[0]
 
 		file, err := os.Open(file_path)
@@ -71,5 +71,7 @@ func main() {
 		if err := scanner.Err(); err != nil {
 			log.Fatal(err)
 		}
-	}
+	} else {
+    fmt.Println("No input file specified")
+  }
 }
