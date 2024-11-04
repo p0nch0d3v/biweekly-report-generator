@@ -21,11 +21,11 @@ Where:
 
 > Task is identified with a double tab (or eight spaces)
 
- Usage:
+ Usage in windows, open a terminal such powershell and execute:
  ```bash
 ./biweekly-report-generator-linux-amd64 file.md
  ```
-or
+or in Linux/MacOs or any *nix OS, open a terminal and execute:
 ```powershell
 .\biweekly-report-generator-windows-amd64.exe file.txt
 ```
