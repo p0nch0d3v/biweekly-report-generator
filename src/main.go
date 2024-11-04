@@ -73,5 +73,6 @@ func main() {
 		}
 	} else {
     fmt.Println("No input file specified")
+    bufio.NewReader(os.Stdin).ReadBytes('\n')
   }
 }
