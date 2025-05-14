@@ -8,12 +8,14 @@ as example:
         - task A
     - project C
         - task D
+            - this third tab would be ignored
 
 - 2024/01/02
     - project A
         - task A
     - project B
         - task E
+            - this third tab would be ignored
 ```
 
 Where:
